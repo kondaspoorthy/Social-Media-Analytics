@@ -37,11 +37,7 @@ Parameters: str
 Returns: str
 '''
 def parseName(fromString):
-   str=fromString
-   start=str.find(":")  
-   end=str.find("(")
-   Name=str[start+2:end-1] 
-   return Name
+   return
 
 
 '''
@@ -51,11 +47,7 @@ Parameters: str
 Returns: str
 '''
 def parsePosition(fromString):
-    str=fromString
-    start=str.find("(")
-    end=str.find("from")
-    Position=str[start+1:end-1]
-    return Position
+    return
 
 
 '''
@@ -65,11 +57,7 @@ Parameters: str
 Returns: str
 '''
 def parseState(fromString):
-    str=fromString
-    start=str.find("from")+len("from")
-    end=str.find(")")
-    State=str[start+1:end]
-    return State
+    return
 
 
 '''
@@ -79,8 +67,7 @@ Parameters: str
 Returns: list of strs
 '''
 def findHashtags(message):
-    s=re.findall("#\w+",message)
-    return s
+    return 
    
 
 '''
@@ -103,27 +90,6 @@ Parameters: dataframe ; dataframe
 Returns: None
 '''
 def addColumns(data, stateDf):
-    names=[]
-    positions=[]
-    states=[]
-    regions=[]
-    hashtags=[]
-    for index,row in data.iterrows():
-        Value=row["label"]
-        names.append(parseName(Value))
-        positions.append(parsePosition(Value))
-        state=parseState(Value)
-        region=getRegionFromState(stateDf,state)
-        value1=row["text"]
-        hashtag=findHashtags(value1)
-        states.append(state)
-        regions.append(region)
-        hashtags.append(hashtag)
-    data["name"]=names
-    data["position"]=positions
-    data["state"]=states
-    data["region"]=regions
-    data["hashtags"]=hashtags
     return
 
 
