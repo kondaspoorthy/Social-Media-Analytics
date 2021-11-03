@@ -16,6 +16,7 @@ nltk.download('vader_lexicon', quiet=True)
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
+import re
 endChars = [ " ", "\n", "#", ".", ",", "?", "!", ":", ";", ")" ]
 
 '''
@@ -25,7 +26,8 @@ Parameters: str
 Returns: dataframe
 '''
 def makeDataFrame(filename):
-    return
+    df=pd.read_csv(filename)
+    return df
 
 
 '''
@@ -35,7 +37,7 @@ Parameters: str
 Returns: str
 '''
 def parseName(fromString):
-    return
+   return
 
 
 '''
@@ -65,8 +67,8 @@ Parameters: str
 Returns: list of strs
 '''
 def findHashtags(message):
-    return
-
+    return 
+   
 
 '''
 getRegionFromState(stateDf, state)
@@ -75,6 +77,9 @@ Parameters: dataframe ; str
 Returns: str
 '''
 def getRegionFromState(stateDf, state):
+    row=stateDf.loc[stateDf["state"] == state, "region"]
+    return row.values[0]
+
     return
 
 
@@ -262,10 +267,18 @@ def scatterPlot(xValues, yValues, labels, title):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+    '''print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
     test.week1Tests()
     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     test.runWeek1()
+    test.testMakeDataFrame()
+    test.testParseName()
+    test.testParsePosition()
+    test.testParseState()
+    test.testFindHashtags()
+    test.testGetRegionFromState()'''
+    test.testAddColumns()
+    
 
     ## Uncomment these for Week 2 ##
     """print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
